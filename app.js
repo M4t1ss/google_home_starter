@@ -65,10 +65,10 @@ function Switch(switchValues){
 
 // needed due to a quirk with PythonShell
 function onString(number){
-  return './public/python/sw' + number + '_on.py'
+  return './scripts/open.py'
 }
 function offString(number){
-  return './public/python/sw' + number + '_off.py'
+  return './scripts/close.py'
 }
 
 
@@ -92,7 +92,7 @@ function saveState (){
 
 //Server Configuration
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/scripts'));
 
 // If you have a frontend, drop it in the Public folder with an entry point of index.html
 app.get('/', function(req, res){
