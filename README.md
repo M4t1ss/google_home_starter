@@ -5,9 +5,9 @@ Thanks for looking through this guide! If you have any questions getting this up
 If you haven't already, install git and node.js on your device.
 
 ### Requirements
-## rrb3 package
+#### Rrb3 package
 * `pip install rrb3`
-## Node js
+#### Node js
 * `wget https://nodejs.org/dist/v8.9.0/node-v8.9.0-linux-armv6l.tar.gz`
 * `tar -xzf node-v8.9.0-linux-armv6l.tar.gz`
 * `cd node-v8.9.0-linux-armv6l/`
