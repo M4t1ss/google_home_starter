@@ -12,6 +12,8 @@ If you haven't already, install git and node.js on your device.
 * `tar -xzf node-v8.9.0-linux-armv6l.tar.gz`
 * `cd node-v8.9.0-linux-armv6l/`
 * `sudo cp -R * /usr/local/`
+* `sudo npm install forever -g`
+(more info https://www.instructables.com/id/Nodejs-App-As-a-RPI-Service-boot-at-Startup/)
 
 1. Fork or clone this repository onto your device. 
 2. In your console, run `npm install` to install the required components.
