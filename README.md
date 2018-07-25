@@ -1,20 +1,26 @@
-## Google Home Starter Guide
-Thanks for looking through this guide! If you have any questions getting this up and running, please feel free to submit an Issue or email me at kylpeacock@gmail.com. 
+## Google Home Window Opener Service
 
 ### Getting Started
 If you haven't already, install git and node.js on your device.
 
 ### Requirements
 #### Rrb3 package
-* `pip install rrb3`
+* `sudo pip install rrb3`
+
 #### Node js
 * `wget https://nodejs.org/dist/v8.9.0/node-v8.9.0-linux-armv6l.tar.gz`
 * `tar -xzf node-v8.9.0-linux-armv6l.tar.gz`
 * `cd node-v8.9.0-linux-armv6l/`
 * `sudo cp -R * /usr/local/`
 * `sudo npm install forever -g`
-(more info https://www.instructables.com/id/Nodejs-App-As-a-RPI-Service-boot-at-Startup/)
 
+#### Service
+(more info https://www.instructables.com/id/Nodejs-App-As-a-RPI-Service-boot-at-Startup/)
+* `sudo cp service/googleHome /etc/init.d/`
+* `sudo chmod 755 /etc/init.d/googleHome`
+* `sudo update-rc.d googleHome defaults`
+
+#### First Time
 1. Fork or clone this repository onto your device. 
 2. In your console, run `npm install` to install the required components.
 3. Run `touch .env` to create your hidden, gitignored environment config file.
