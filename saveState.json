@@ -1,1 +1,14 @@
-{"switches":[{"id":"sw1","state":"off","name":"Kyle's Lamp"}]}
+{
+  "switches": [
+    {
+      "id": "sw1",
+      "state": "off",
+      "name": "Bedroom window"
+    },
+    {
+      "id": "sw2",
+      "state": "on",
+      "name": "Bedroom radiator"
+    }
+  ]
+}
