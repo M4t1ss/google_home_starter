@@ -65,16 +65,21 @@ function Switch(switchValues){
 
 // needed due to a quirk with PythonShell
 function onString(number){
-	if (number == 1):
-		return './scripts/open.py'
-	if (number == 2):
-		return './scripts/stepper-fwd.py'
+  if (number == 1){
+    return './scripts/open.py'
+  }
+  if (number == 2){
+    return './scripts/stepper-fwd.py'
+  }
 }
 function offString(number){
-	if (number == 1):
-		return './scripts/close.py'
-	if (number == 2):
-		return './scripts/stepper-bwd.py'
+  if (number == 1){
+    return './scripts/close.py'
+  }
+  if (number == 2){
+    return './scripts/stepper-bwd.py'
+  }
+  return './scripts/stepper-bwd.py'
 }
 
 
