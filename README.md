@@ -16,6 +16,10 @@ If you haven't already, install git and node.js on your device.
 
 #### Service
 (more info https://www.instructables.com/id/Nodejs-App-As-a-RPI-Service-boot-at-Startup/)
+
+Note that this repository should be cloned in `/home/pi/tools`, which is hardcoded in the `service/googleHome` file. 
+If you use a different directory, be sure to change that in the `googleHome` file.
+
 * `sudo cp service/googleHome /etc/init.d/`
 * `sudo chmod 755 /etc/init.d/googleHome`
 * `sudo update-rc.d googleHome defaults`
