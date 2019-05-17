@@ -12,7 +12,7 @@
 
 
 #	CLI /usr/local/bin/node /usr/local/bin/forever-service install googleHome
-#	Working Directory /home/pi/tools/google_home_starter
+#	Working Directory /home/pi/tools/google_home_window
 
 #Setup Environment variables (if any)
 
@@ -71,7 +71,7 @@ start() {
 
 	
 	# move to the directory from where the inital forever script was launched so that even if it is relative it works as expected
-	cd /home/pi/tools/google_home_starter
+	cd /home/pi/tools/google_home_window
 
 	
 
