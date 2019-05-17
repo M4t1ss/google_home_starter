@@ -163,6 +163,15 @@ app.post('/api/switches/:id', function (req, res) {
 
 })
 
+app.get('/api/temperature', (req, res) => {
+  PythonShell.run("../rpi-examples/LM75A/python/LM75A.py", function (err, temp) {
+    if (err) throw err;
+    // results is an array consisting of messages collected during execution
+    temperature = parseFloat((temp += '').split(" ")[1]);
+    res.json(temperature);
+  });
+});
+
 app.listen(process.env.PORT, function () {
   console.log('Listening on port ' + process.env.PORT);
 })
