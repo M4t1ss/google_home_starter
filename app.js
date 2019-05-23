@@ -57,11 +57,11 @@ function Switch(switchValues) {
     var state = state == "off";
     let temperature = 0;
     let light;
-    PythonShell.run("../rpi-examples/LM75A/python/LM75A.py", function (err, temp) {
+    PythonShell.run("./scripts/LM75A.py", function (err, temp) {
       if (err) throw err;
       // results is an array consisting of messages collected during execution
       temperature = parseFloat((temp += '').split(" ")[1]);
-      PythonShell.run("../light.py", function (err, _light) {
+      PythonShell.run("./scripts/light.py", function (err, _light) {
         light = parseInt(_light);
         http.post(`https://kedahome.azurewebsites.net/api/Action/SetAction`,
           { ActionType: actionType, Time: new Date(), Light: light, Temperature: temperature, WindowOpened: state, HeaterOn: false, Room: 0 })
