@@ -13,6 +13,7 @@ If you haven't already, install git and node.js on your device.
 * `cd node-v8.9.0-linux-armv6l/`
 * `sudo cp -R * /usr/local/`
 * `sudo npm install forever -g`
+* `sudo npm install axios`
 
 #### Service
 (more info https://www.instructables.com/id/Nodejs-App-As-a-RPI-Service-boot-at-Startup/)
