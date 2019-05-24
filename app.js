@@ -56,7 +56,7 @@ function Switch(switchValues) {
     var actionType = state == "on" ? 1 : 2;
     var state = state == "off";
     let temperature = 0;
-    let light;
+    let light = 0;
     PythonShell.run("./scripts/LM75A.py", function (err, temp) {
       if (err) throw err;
       // results is an array consisting of messages collected during execution
@@ -64,8 +64,18 @@ function Switch(switchValues) {
       PythonShell.run("./scripts/light.py", function (err, _light) {
         light = parseInt(_light);
         http.post(`https://kedahome.azurewebsites.net/api/Action/SetAction`,
-          { ActionType: actionType, Time: new Date(), Light: light, Temperature: temperature, WindowOpened: state, HeaterOn: false, Room: 0 })
-          .then((res) => { }).catch((error) => { });
+			{ 
+				ActionType: actionType, 
+				Time: new Date(), 
+				Light: light, 
+				Temperature: temperature, 
+				WindowOpened: state, 
+				HeaterOn: false, 
+				Room: 0 
+			})
+          .then((res) => { res = res.json(); console.log("No servera atnāca" + res.toString()) })
+		  .catch((error) => { });
+		  writeLog(0, actionType, new Date(), temperature, 0, state, false);
       });
     });
     PythonShell.run(str, function (err) {
@@ -116,6 +126,13 @@ function saveState() {
   fs.writeFile('./saveState.json', JSON.stringify(formattedState))
 }
 
+function writeLog(room, action, time, temperature, light, windowState, radiatorState) {
+	var logLine = room + "\t" + action + "	" + time + "	" + temperature + "	" + light + "	" + windowState + "	" + radiatorState + "\n";
+	fs.appendFile('actions.csv', logLine, function (err) {
+		if (err) throw err;
+	});
+}
+
 
 //Server Configuration
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -123,7 +140,7 @@ app.use(express.static(__dirname + '/scripts'));
 
 // If you have a frontend, drop it in the Public folder with an entry point of index.html
 app.get('/', function (req, res) {
-  res.sendFile('index');
+  res.sendFile(__dirname + '/index.html');
 })
 
 // Switch Routes for API
@@ -163,12 +180,17 @@ app.post('/api/switches/:id', function (req, res) {
 
 })
 
-app.get('/api/temperature', (req, res) => {
-  PythonShell.run("../rpi-examples/LM75A/python/LM75A.py", function (err, temp) {
+//temperature and switches states
+app.get('/api/getStatus', (req, res) => {
+  PythonShell.run("/scripts/LM75A.py", function (err, temp) {
     if (err) throw err;
     // results is an array consisting of messages collected during execution
     temperature = parseFloat((temp += '').split(" ")[1]);
-    res.json(temperature);
+    fs.readFile('./saveState.json','utf8', (err, data) => {
+      if (err) throw err;
+      var result = {"Temperature": temperature, "Switches": JSON.parse(data)};
+      res.json(result);
+    });
   });
 });
 
