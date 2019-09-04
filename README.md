@@ -5,15 +5,21 @@ If you haven't already, install git and node.js on your device.
 
 ### Requirements
 #### Rrb3 package
-* `sudo pip install rrb3`
+
+```Shell
+sudo pip install rrb3
+```
 
 #### Node js
-* `wget https://nodejs.org/dist/v8.9.0/node-v8.9.0-linux-armv6l.tar.gz`
-* `tar -xzf node-v8.9.0-linux-armv6l.tar.gz`
-* `cd node-v8.9.0-linux-armv6l/`
-* `sudo cp -R * /usr/local/`
-* `sudo npm install forever -g`
-* `sudo npm install axios`
+
+```Shell
+wget https://nodejs.org/dist/v8.9.0/node-v8.9.0-linux-armv6l.tar.gz
+tar -xzf node-v8.9.0-linux-armv6l.tar.gz
+cd node-v8.9.0-linux-armv6l/
+sudo cp -R * /usr/local/
+sudo npm install forever -g
+sudo npm install axios
+```
 
 #### Service
 (more info https://www.instructables.com/id/Nodejs-App-As-a-RPI-Service-boot-at-Startup/)
@@ -21,9 +27,11 @@ If you haven't already, install git and node.js on your device.
 Note that this repository should be cloned in `/home/pi/tools`, which is hardcoded in the `service/googleHome` file. 
 If you use a different directory, be sure to change that in the `googleHome` file.
 
-* `sudo cp service/googleHome /etc/init.d/`
-* `sudo chmod 755 /etc/init.d/googleHome`
-* `sudo update-rc.d googleHome defaults`
+```Shell
+sudo cp service/googleHome /etc/init.d/
+sudo chmod 755 /etc/init.d/googleHome
+sudo update-rc.d googleHome defaults
+```
 
 #### First Time
 1. Fork or clone this repository onto your device. 
